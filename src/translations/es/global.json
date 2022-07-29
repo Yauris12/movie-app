@@ -1,0 +1,19 @@
+{
+  "header": {
+    "home": "Inicio",
+    "movies": "Peliculas",
+    "favorite": "Favoritos",
+    "Watch now": "Ver Ahora"
+  },
+  "home": {
+    "trending": "Peliculas Destacadas",
+    "upcoming": "Peliculas A Estrenarse",
+    "topRated": "Peliculas Mejor Calificadas",
+    "similar": "Peliculas similares"
+  },
+  "search": {
+    "noSearch": "No se encontraron resultados",
+    "noFavorite": "Aún no tienes favoritos",
+    "noId": "Id de Pelicula no valido"
+  }
+}

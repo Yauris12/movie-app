@@ -1,0 +1,19 @@
+{
+  "header": {
+    "home": "Home",
+    "movies": "Movies",
+    "favorite": "Favorite",
+    "Watch now": "Watch Now"
+  },
+  "home": {
+    "trending": "Trending Movies",
+    "upcoming": "Upcoming Movies",
+    "topRated": "Top Rated Movies",
+    "similar": "Related Movies"
+  },
+  "search": {
+    "noSearch": "No results found",
+    "noFavorite": "You don't have favorites yet",
+    "noId": "invalid id movie"
+  }
+}

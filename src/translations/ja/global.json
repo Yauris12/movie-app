@@ -1,0 +1,19 @@
+{
+  "header": {
+    "home": "始める",
+    "movies": "映画",
+    "favorite": "お気に入り",
+    "Watch now": "今見る"
+  },
+  "home": {
+    "trending": "トレンド映画",
+    "upcoming": "今後の映画",
+    "topRated": "最高評価の映画",
+    "similar": "関連映画"
+  },
+  "search": {
+    "noSearch": "結果が見つかりません",
+    "noFavorite": "あなたはまだお気に入りを持っていません",
+    "noId": "無効なIDムービー"
+  }
+}
