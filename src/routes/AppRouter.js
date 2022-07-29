@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { HashRouter as Router, Routes, Route } from 'react-router-dom'
 import { Home, Detail, Movies, Error, Favorite } from '../pages'
 import SharedLayout from './SharedLayout'
 
