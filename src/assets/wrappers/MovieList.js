@@ -7,14 +7,25 @@ const Wrapper = styled.div`
   .swiper-slide {
     width: 15%;
   }
+  .skeleton-movie {
+    height: 241px;
+    width: 15%;
+    background: rgba(0, 0, 0, 0.4);
+  }
 
   @media (max-width: 1024px) {
     .swiper-slide {
       width: 25%;
     }
+    .skeleton-movie {
+      width: 25%;
+    }
   }
   @media (max-width: 768px) {
     .swiper-slide {
+      width: 35%;
+    }
+    .skeleton-movie {
       width: 35%;
     }
   }
@@ -55,6 +66,12 @@ const Wrapper = styled.div`
     transform: translate(-50%, -50%) scale(0);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     text-align: center;
+  }
+
+  .skeleton-cards {
+    display: flex;
+    gap: 1rem;
+    width: 100%;
   }
 
   @media (hover: hover) and (pointer: fine) {

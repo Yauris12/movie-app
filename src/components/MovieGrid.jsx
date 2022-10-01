@@ -13,10 +13,10 @@ const MovieGrid = () => {
   const [page, setPage] = useState(1)
   const [totalResult, setTotalResult] = useState()
   const language = localStorage.getItem('i18nextLng')
-
+  const [loading, setLoading] = useState(false)
   const getList = async () => {
     let response = null
-
+    setLoading(true)
     if (query === undefined) {
       const params = { page, language }
       response = await tmdbApi.getMovieList(movieType.upcoming, { params })
@@ -30,6 +30,7 @@ const MovieGrid = () => {
     setMovies(response.results)
     setPage(response.page)
     setTotalResult(response.total_results)
+    setLoading(false)
   }
 
   const onChangePage = (page) => {
@@ -48,25 +49,48 @@ const MovieGrid = () => {
     getList()
   }, [t])
 
-  if (!movies.length) {
-    return <h1> {t(`search.noSearch`)}</h1>
+  // if (!movies?.length) {
+  //   return <h1> {t(`search.noSearch`)}</h1>
+  // }
+
+  const CardSkeleton = () => {
+    return (
+      <div className='movie-grid '>
+        {Array.from({ length: 12 }, (_, index) => (
+          <div className='movie-card skeleton-card '></div>
+        ))}
+      </div>
+    )
   }
 
   return (
     <div>
       <h2>Movies</h2>
+      {!movies?.length ? (
+        <h1> {t(`search.noSearch`)}</h1>
+      ) : loading ? (
+        <CardSkeleton />
+      ) : (
+        <>
+          <div className='movie-grid'>
+            {movies.map((movie, i) => {
+              return (
+                <MovieCard
+                  style={{ maxWidth: '100px' }}
+                  movie={movie}
+                  key={i}
+                />
+              )
+            })}
+          </div>
 
-      <div className='movie-grid'>
-        {movies.map((movie, i) => {
-          return <MovieCard movie={movie} key={i} />
-        })}
-      </div>
-
-      <PaginationC
-        currentPage={page}
-        totalItems={totalResult}
-        onChangePage={onChangePage}
-      />
+          <PaginationC
+            currentPage={page}
+            totalItems={totalResult}
+            onChangePage={onChangePage}
+          />
+        </>
+      )}
     </div>
   )
 }

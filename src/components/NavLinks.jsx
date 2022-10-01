@@ -10,19 +10,19 @@ const NavLinks = () => {
     {
       id: 1,
       text: t('header.home'),
-      path: '/',
+      path: '',
       icon: <FaHome />,
     },
     {
       id: 2,
       text: t('header.movies'),
-      path: '/movie',
+      path: 'movie',
       icon: <MdMonitor />,
     },
     {
       id: 3,
       text: t('header.favorite'),
-      path: '/favorite',
+      path: 'favorite',
       icon: <FaHeart />,
     },
   ]

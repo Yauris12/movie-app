@@ -83,6 +83,7 @@ const Wrapper = styled.div`
     }
 
     .movie__img {
+      text-align: center;
       img {
         margin: 0 auto;
       }

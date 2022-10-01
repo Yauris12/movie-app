@@ -12,6 +12,7 @@ const SearchHeader = ({ query, onChange, inputRef, onSubmit }) => {
         onChange={onChange}
         ref={inputRef}
         name='query'
+        autocomplete='off'
       />
 
       <FaSearch />

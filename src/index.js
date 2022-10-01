@@ -11,6 +11,9 @@ import global_en from './translations/en/global.json'
 import global_ja from './translations/ja/global.json'
 import LanguageDetector from 'i18next-browser-languagedetector'
 import { AppProvider } from './context/movieContext'
+import { HashRouter as Router } from 'react-router-dom'
+import 'react-loading-skeleton/dist/skeleton.css'
+import { SkeletonTheme } from 'react-loading-skeleton'
 i18n
   .use(LanguageDetector)
   .use(initReactI18next)
@@ -31,9 +34,11 @@ i18n
   })
 const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(
-  <React.StrictMode>
-    <AppProvider>
-      <AppRouter />
-    </AppProvider>
-  </React.StrictMode>
+  <SkeletonTheme baseColor='rgba(0, 0, 0, 0.4)' highlightColor='#003049'>
+    <Router>
+      <AppProvider>
+        <AppRouter />
+      </AppProvider>
+    </Router>
+  </SkeletonTheme>
 )

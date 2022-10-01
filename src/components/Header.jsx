@@ -8,6 +8,9 @@ import tmdbApi from '../api/tmdbApi'
 import SearchMenu from './SearchMenu'
 import useClickOutside from '../helpers/clickOutside'
 import { Link, useNavigate } from 'react-router-dom'
+
+import debounce from 'lodash.debounce'
+
 const Header = () => {
   const [t, i18next] = useTranslation('global')
   const inputRef = useRef(null)
@@ -16,9 +19,10 @@ const Header = () => {
   const [query, setQuery] = useState('')
   const navigate = useNavigate()
   const [movies, setMovies] = useState('')
-  const onChange = async (e) => {
+
+  const onChange = debounce(async (e) => {
     e.preventDefault()
-    setQuery(inputRef.current.value)
+    setQuery(inputRef?.current?.value)
 
     if (inputRef.current.value !== '') {
       setMenu(true)
@@ -33,7 +37,7 @@ const Header = () => {
     } else {
       setMenu(false)
     }
-  }
+  }, 1000)
 
   const onSubmit = (e) => {
     e.preventDefault()

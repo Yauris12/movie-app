@@ -22,9 +22,10 @@ const Favorite = () => {
     <Wrapper>
       <h2>Favorite</h2>
       <div className='movie-grid'>
-        {favorite.map((movie, i) => {
-          return <MovieCard movie={movie} key={i} />
-        })}
+        {favorite &&
+          favorite?.map((movie, i) => {
+            return <MovieCard movie={movie} key={i} />
+          })}
       </div>
     </Wrapper>
   )

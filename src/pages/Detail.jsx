@@ -8,20 +8,24 @@ import Wrapper from '../assets/wrappers/Detail'
 import MovieList from '../components/MovieList'
 import { useMovieContext } from '../context/movieContext'
 import { FaHeart, FaRegHeart } from 'react-icons/fa'
-
+import Skeleton from 'react-loading-skeleton'
 const Detail = () => {
   const { changeFavorite, favorite } = useMovieContext()
-
+  const [loading, setLoading] = useState(false)
   const { id } = useParams()
   const [t] = useTranslation('global')
   const language = localStorage.getItem('i18nextLng')
 
   const [movie, setMovie] = useState({})
   const getDetail = async () => {
+    setLoading(true)
     const params = { language }
     const response = await tmdbApi.detail(id, { params })
 
     setMovie(response)
+    setTimeout(() => {
+      setLoading(false)
+    }, 500)
     window.scrollTo(0, 0)
   }
 
@@ -45,10 +49,62 @@ const Detail = () => {
     )
   }
 
+  const DetailsSkeleton = () => {
+    return (
+      <>
+        <div className='movie__img img-none'>
+          <Skeleton
+            style={{
+              width: '370px',
+              height: '520px',
+            }}
+          />
+        </div>
+
+        <div className='content__info'>
+          <Skeleton width={350} height={30} style={{ marginBottom: '1rem' }} />
+          <div className='movie__img title-img'>
+            <Skeleton
+              style={{
+                width: '370px',
+                height: '520px',
+              }}
+            />
+          </div>
+          <div className='container-tags'>
+            <div className='gender'>
+              <Skeleton width={60} />
+              <Skeleton width={60} />
+              <Skeleton width={60} />
+              <Skeleton width={60} />
+            </div>
+
+            <div className='favorite'>
+              <Skeleton width={90} />
+            </div>
+          </div>
+          <div style={{ marginTop: '10px', marginBottom: '1rem' }}>
+            <Skeleton count={4} style={{ marginTop: '1rem' }} />
+          </div>
+          <Skeleton width={50} />
+          <div className='casts'>
+            <Skeleton width={90} height={120} />
+            <Skeleton width={90} height={120} />
+            <Skeleton width={90} height={120} />
+            <Skeleton width={90} height={120} />
+            <Skeleton width={90} height={120} />
+          </div>
+        </div>
+      </>
+    )
+  }
+
   return (
     <>
       <Wrapper>
-        {movie && (
+        {loading ? (
+          <DetailsSkeleton />
+        ) : (
           <>
             <div className='movie__img img-none'>
               <img src={bgImage} alt='' />

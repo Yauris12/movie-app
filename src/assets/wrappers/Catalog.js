@@ -47,11 +47,22 @@ const Wrapper = styled.div`
     text-align: center;
   }
 
+  .skeleton-card {
+    background: rgba(0, 0, 0, 0.4);
+    height: 30rem;
+  }
+
+  @media (max-width: 443px) {
+    .skeleton-card {
+      background: rgba(0, 0, 0, 0.4);
+      height: 45rem;
+    }
+  }
+
   @media (hover: hover) and (pointer: fine) {
     .container-img:hover .movie-card {
       opacity: 0.8;
       filter: blur(5px);
-      background: red;
     }
 
     .container-img:hover {

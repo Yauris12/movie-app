@@ -9,6 +9,7 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 import { useNavigate } from 'react-router'
 import Button from './Button'
 import { useTranslation } from 'react-i18next'
+import Skeleton from 'react-loading-skeleton'
 
 const HeroSlide = () => {
   const [t, i18next] = useTranslation('global')
@@ -38,25 +39,33 @@ const HeroSlide = () => {
     getMovies()
   }, [t])
 
+  const CardSkeleton = () => {
+    return <div className='hero-slide'></div>
+  }
+
   return (
     <Wrapper>
-      <Swiper
-        grabCursor={true}
-        spaceBetween={0}
-        slidesPerView={1}
-        autoplay={{ delay: 5000 }}
-      >
-        {movieItems.map((item, i) => (
-          <SwiperSlide key={i}>
-            {({ isActive }) => (
-              <HeroSlideItem
-                item={item}
-                className={`${isActive ? 'active' : ''}`}
-              />
-            )}
-          </SwiperSlide>
-        ))}
-      </Swiper>
+      {loading ? (
+        <CardSkeleton />
+      ) : (
+        <Swiper
+          grabCursor={true}
+          spaceBetween={0}
+          slidesPerView={1}
+          autoplay={{ delay: 5000 }}
+        >
+          {movieItems.map((item, i) => (
+            <SwiperSlide key={i}>
+              {({ isActive }) => (
+                <HeroSlideItem
+                  item={item}
+                  className={`${isActive ? 'active' : ''}`}
+                />
+              )}
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      )}
     </Wrapper>
   )
 }
